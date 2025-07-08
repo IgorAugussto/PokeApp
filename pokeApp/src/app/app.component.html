@@ -1,0 +1,39 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item routerLink="/home">Pokédex</ion-item>
+      <ion-item routerLink="/favorites">Favoritos</ion-item>
+
+      <ion-accordion-group>
+        <ion-accordion value="teams">
+          <ion-item slot="header">
+            <ion-label>Times</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <ion-list>
+              <ion-item
+                *ngFor="let team of teams$ | async"
+                [routerLink]="['/teams', team.name]"
+              >
+                {{ team.name }}
+              </ion-item>
+
+              <ion-item button (click)="addTeamFromMenu()">
+                <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+                <ion-label>Criar Novo Time</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="main-content"></ion-router-outlet>

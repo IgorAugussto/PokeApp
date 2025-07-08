@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Times</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" sizeMd="3" *ngFor="let team of teams">
+        <ion-card class="team-card" (click)="openTeam(team)">
+          <img
+            src="assets/icon/folder.svg"
+            alt="Time {{ team.name }}"
+            width="100%"
+          />
+          <ion-card-header>
+            <ion-card-title class="ion-text-center"
+              >{{ team.name }}</ion-card-title
+            >
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="ion-text-center ion-margin">
+    <ion-button (click)="addTeam()">Criar Novo Time</ion-button>
+  </div>
+</ion-content>
