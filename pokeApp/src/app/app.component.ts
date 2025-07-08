@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
 import { TeamService } from './services/team.service';
 import { AsyncPipe } from '@angular/common';
+import { startWith } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { AsyncPipe } from '@angular/common';
   imports: [IonicModule, RouterModule, NgIf, NgFor, AsyncPipe],
 })
 export class AppComponent {
-teams$ = this.teamService.teams$;
+teams$ = this.teamService.teams$.pipe(startWith([]));
 
   constructor(private teamService: TeamService) {}
 
